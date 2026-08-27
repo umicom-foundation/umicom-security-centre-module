@@ -1,0 +1,50 @@
+#-----------------------------------------------------------------------------
+# Umicom Security Centre Module
+# File: application.umicom.yaml
+#
+# PURPOSE:
+#   Declare Umicom Security Centre identity and thin-client boundaries for suite discovery.
+#
+# Created by: Sammy Hegab
+# Organisation: Umicom Foundation
+# Licence: MIT
+#-----------------------------------------------------------------------------
+schema: umicom.application.v1
+
+application:
+  id: org.umicom.security-centre
+  name: Umicom Security Centre
+  short_name: Security Centre
+  version: 0.1.0
+  executable: umicom-security-centre-console
+  aliases: [security-centre]
+
+framework:
+  minimum_version: 0.9.0
+  compatible_major: 0
+
+frontends:
+  - console
+
+entry:
+  kind: workbench
+  taskbar_group: system
+  pinned_by_default: false
+  default_layout: security
+
+capabilities:
+  - umicom.security
+  - umicom.audit
+  - umicom.operations
+  - umicom.application.experience
+  - umicom.application.federation
+
+source_layout:
+  product_root: src
+  composition_root: src
+  console_frontend: src/console
+
+boundaries:
+  owns_reusable_framework_logic: false
+  owns_persistence: false
+  consumes_framework_services: true
