@@ -77,6 +77,12 @@ if(COMMAND umicom_apply_sanitizers)
     umicom_apply_sanitizers(umicom_security_centre_module)
 endif()
 
+include(
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../framework/cmake/UmicomThinApplicationRuntime.cmake")
+umicom_extend_thin_application_runtime(
+    NAME "security-centre"
+    TARGET "umicom_security_centre_module")
+
 if(UMICOM_SECURITY_CENTRE_BUILD_CONSOLE)
     add_executable(umicom-security-centre-console
         src/console/main.c)
@@ -104,6 +110,20 @@ if(BUILD_TESTING)
     add_test(
         NAME security-centre.module.application
         COMMAND umicom_security_centre_module-test)
+
+    add_executable(umicom_security_centre_workspace-test
+        tests/test_workspace.c)
+    target_link_libraries(umicom_security_centre_workspace-test PRIVATE
+        Umicom::security_centre_module)
+    if(COMMAND umicom_apply_warnings)
+        umicom_apply_warnings(umicom_security_centre_workspace-test)
+    endif()
+    if(COMMAND umicom_apply_sanitizers)
+        umicom_apply_sanitizers(umicom_security_centre_workspace-test)
+    endif()
+    add_test(
+        NAME security-centre.module.workspace
+        COMMAND umicom_security_centre_workspace-test)
 endif()
 
 install(TARGETS umicom_security_centre_module
