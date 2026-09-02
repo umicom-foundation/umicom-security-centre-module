@@ -28,12 +28,20 @@ static const UmiProductApplicationAdoption ADOPTION = {
     1
 };
 
+/*
+ * Provide the security centre productisation contribution operation used by this module
+ * and its client applications.
+ */
 const UmiProductApplicationAdoption *
 umi_security_centre_productisation_contribution(void)
 {
     return &ADOPTION;
 }
 
+/*
+ * Provide the security centre productisation snapshot operation used by this module and
+ * its client applications.
+ */
 UmiStatus umi_security_centre_productisation_snapshot(
     UmiProductApplicationAdoptionSnapshot *out_snapshot)
 {

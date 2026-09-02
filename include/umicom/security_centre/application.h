@@ -25,11 +25,23 @@ extern "C" {
 
 #define UMI_SECURITY_CENTRE_MODULE_API_VERSION 1U
 
+/**
+ * Provide the security centre application id operation used by this module and its client
+ * applications.
+ */
 const char *umi_security_centre_application_id(void);
 
+/**
+ * Provide the security centre application experience operation used by this module and its
+ * client applications.
+ */
 const UmiApplicationExperienceDefinition *
 umi_security_centre_application_experience(void);
 
+/**
+ * Provide the security centre application status operation used by this module and its
+ * client applications.
+ */
 UmiStatus umi_security_centre_application_status(
     UmiApplicationExperienceStatus *out_status);
 
