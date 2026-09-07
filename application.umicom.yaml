@@ -17,6 +17,8 @@ application:
   short_name: Security Centre
   version: 0.1.0
   executable: umicom-security-centre-console
+  native_executable: umicom-security-centre
+  console_executable: umicom-security-centre-console
   aliases: [security-centre]
 
 framework:
@@ -25,6 +27,8 @@ framework:
 
 frontends:
   - console
+  # Shared Framework GTK layout preview; domain services require controllers.
+  - gtk
 
 entry:
   kind: workbench
