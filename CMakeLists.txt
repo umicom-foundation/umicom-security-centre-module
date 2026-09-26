@@ -184,3 +184,10 @@ umicom_add_application_productisation_contribution(
     TARGET umicom_security_centre_productisation
     SOURCE "src/productisation_contribution.c"
     TEST_SOURCE "tests/test_productisation_contribution.c")
+
+# Reusable import, review, persistence and access behaviour belongs to Framework.
+# Existing product sources and their verification targets remain unchanged.
+include("${CMAKE_CURRENT_SOURCE_DIR}/../../framework/cmake/UmicomEnterpriseWorkspace.cmake")
+umicom_attach_enterprise_workspace(
+    NAME "security-centre"
+    TARGET umicom_security_centre_module)
